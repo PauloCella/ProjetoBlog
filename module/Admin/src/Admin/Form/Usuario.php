@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Formulario 
+ * 
+ * @Author Paulo Cella <paulocella@unochapeco.edu.br>
+ * 
+ */
+
 namespace Admin\Form;
 
 use \Zend\Form\Form as Form;
@@ -31,21 +38,7 @@ class Usuario extends Form
 				'placeholder' => 'Informe o nome',
 				'id' => 'nome'
 				)
-			));
-		
-		$this->add(array(
-			'name' => 'sobrenome',
-			'type' => 'text',
-			'options' => array(
-				'label' => 'Sobrenome:'
-				),
-			'attributes' => array(
-				'placeholder' => 'Informe o sobrenome',
-				'id' => 'sobrenome'
-				)
-			));
-                
-                
+			));                
 		
 		$this->add(array(
 			'name' => 'email',
@@ -59,18 +52,42 @@ class Usuario extends Form
 				)
 			));
 			
-			$this->add(array(
-			'name' => 'telefone',
-			'type' => 'text',
+                $this->add(array(
+			'name' => 'data_nasc',
+			'type' => 'date',
 			'options' => array(
-				'label' => 'Telefone:'
+				'label' => 'Data nascimento'
 				),
 			'attributes' => array(
-				'placeholder' => 'Informe o telefone',
-				'id' => 'telefone'
+				'placeholder' => 'Informe sua data de nascimento',
+				'id' => 'data_nasc'
 				)
 			));
-		
+                
+		$this->add(array(
+			'name' => 'perfil',
+			'type' => 'text',
+			'options' => array(
+				'label' => 'Perfil:'
+				),
+			'attributes' => array(
+				'placeholder' => 'Informe o perfil',
+				'id' => 'perfil'
+				)
+			));                
+	
+                $this->add(array(
+			'name' => 'login',
+			'type' => 'text',
+			'options' => array(
+				'label' => 'Login:'
+				),
+			'attributes' => array(
+				'placeholder' => 'Informe o Login',
+				'id' => 'login'
+				)
+			));                
+				
 		
 		$this->add(array(
 			'name' => 'senha',
@@ -96,45 +113,6 @@ class Usuario extends Form
                     )
                 ));
 		
-		$this->add(array(
-			'type' => 'DoctrineModule\Form\Element\ObjectRadio',
-			'name' => 'sexo',
-			'options' => array(
-				'disable_inarray_validator' => true,
-				'label' => 'Sexo*',
-				'object_manager' => $em,
-				'target_class' => 'Admin\Model\Sexo',
-				'property' => 'descSexo',
-				'is_method' => true,
-				'find_method' => array(
-					'name' => 'findBy',
-					'params' => array(
-						'criteria' => array(),
-						'orderBy' => array('desc_sexo' => 'ASC'),
-						),
-					),
-				),
-			));
-		
-		$this->add(array(
-			'type' => 'DoctrineModule\Form\Element\ObjectMultiCheckbox',
-			'name' => 'interesses',
-			'options' => array(
-				'disable_inarray_validator' => true,
-				'label' => 'Interesses*',
-				'object_manager' => $em,
-				'target_class' => 'Admin\Model\Interesse',
-				'property' => 'descInteresse',
-				'is_method' => true,
-				'find_method' => array(
-					'name' => 'findBy',
-					'params' => array(
-						'criteria' => array(),
-						'orderBy' => array('desc_interesse' => 'ASC'),
-						),
-					),
-				),
-			));
 		
 		$this->add(array(
 			'name' => 'submit',

@@ -1,11 +1,10 @@
 <?php
 
-// module/Admin/conﬁg/module.config.php:
+// module/Main/conﬁg/module.config.php:
 return array(
     'controllers' => array(//add module controllers
         'invokables' => array(
-            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
-            
+            'Main\Controller\Index' => 'Main\Controller\IndexController',
         ),
     ),
 //Configuração doctrine
@@ -14,11 +13,11 @@ return array(
             'application_entities' => array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/Admin/Entity')
+                'paths' => array(__DIR__ . '/../src/Main/Entity')
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    'Admin\Entity' => 'application_entities'
+                    'Main\Entity' => 'application_entities'
                 )
             ))),
 //*********************************************************
@@ -29,7 +28,7 @@ return array(
                 'options' => array(
                     'route' => '/admin',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Admin\Controller',
+                        '__NAMESPACE__' => 'Main\Controller',
                         'controller' => 'Index',
                         'action' => 'index',
                         'module' => 'admin'
@@ -56,33 +55,7 @@ return array(
                     ),
                 ),
             ),
-            'usuarios' => array(
-                'type' => 'segment',
-                'options' => array(
-                    'route' => '/admin/usuarios/index/[page/:page]',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Admin\Controller',
-                        'controller' => 'Usuarios',
-                        'action' => 'index',
-                        'module' => 'admin',
-                        'page' => 1,
-                    ),
-                ),
-            ),
-            
-            'interesses' => array(
-                'type' => 'segment',
-                'options' => array(
-                    'route' => '/admin/interesses/index/[page/:page]',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Admin\Controller',
-                        'controller' => 'Interesses',
-                        'action' => 'index',
-                        'module' => 'admin',
-                        'page' => 1,
-                    ),
-                ),
-            ),
+
             
         ),
     ),
@@ -90,7 +63,7 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'Session' => function ($sm){
-                return new Zend\Session\Container('SessionAdmin');
+                return new Zend\Session\Container('SessionMain');
             },
         )
     ),
@@ -100,7 +73,7 @@ return array(
 // 'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
 // ),
         'template_path_stack' => array(
-            'admin' => __DIR__ . '/../view',
+            'main' => __DIR__ . '/../view',
         ),
     ),
         /* 'db' => array( //module can have a specific db configuration
