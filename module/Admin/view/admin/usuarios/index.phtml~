@@ -1,47 +1,53 @@
-<buttom class="btn btn-success" onclick="location.href='/admin/usuarios/save'">Novo Usuario</buttom>
+<buttom class="btn btn-success" onclick="location.href = '/admin/usuarios/save'">Novo Usuario</buttom>
 
 <table class="table">
-	<thead>
-	<tr>
-		<td>Id</td><td>Nome</td><td>Sobrenome</td><td>E-mail</td><td>Telefone</td><td>Senha</td><td>Sexo</td>
-	</tr>
-	</thead>
-	<tbody>
+    <thead>
+        <tr>
+            <td>Id</td><td>Nome</td><td>Sobrenome</td><td>E-mail</td><td>Telefone</td><td>Senha</td><td>Sexo</td>
+        </tr>
+    </thead>
+    <tbody>
 
-		<?php foreach($usuarios as $usuario){
-		?>
-			<tr>
-				<td>
-					<?php echo $usuario->getId(); ?>
-				</td>
-				<td>
-					<?php echo $usuario->getNome(); ?>
-				</td>
-				<td>
-					<?php echo $usuario->getSobrenome(); ?>
-				</td>
-				<td>
-					<?php echo $usuario->getEmail(); ?>
-				</td>
-				<td>
-					<?php echo $usuario->getTelefone(); ?>
-				</td>
-				<td>
-					<?php echo $usuario->getSenha(); ?>
-				</td>
-				<td>
-					<?php echo $usuario->getSexo()->getDescSexo(); ?>
-				</td>
-				<td>
-					<a href="/admin/usuarios/interesses/id/ <?php echo $usuario->getId(); ?>">Visualizar interesses</a>
-				</td>	
-				<td>
-					<a href="/admin/usuarios/save/id/ <?php echo $usuario->getId(); ?>">Editar</a>
-				</td>
-				<td>
-					<a href="/admin/usuarios/delete/id/ <?php echo $usuario->getId(); ?>">Excluir</a>
-				</td>
-			</tr>
-			<?php } ?>
-		</tbody>
-		
+        <?php foreach ($usuarios as $usuario) {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $usuario->getId(); ?>
+                </td>
+                <td>
+                    <?php echo $usuario->getNome(); ?>
+                </td>
+                <td>
+                    <?php echo $usuario->getSobrenome(); ?>
+                </td>
+                <td>
+                    <?php echo $usuario->getEmail(); ?>
+                </td>
+                <td>
+                    <?php echo $usuario->getTelefone(); ?>
+                </td>
+                <td>
+                    <?php echo $usuario->getSenha(); ?>
+                </td>
+                <td>
+                    <a href="/admin/usuarios/interesses/id/ <?php echo $usuario->getId(); ?>">Visualizar interesses</a>
+                </td>	
+                <td>
+                    <a href="/admin/usuarios/save/id/ <?php echo $usuario->getId(); ?>">Editar</a>
+                </td>
+                <td>
+                    <a href="/admin/usuarios/delete/id/ <?php echo $usuario->getId(); ?>">Excluir</a>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+    
+    <?php
+    echo $this->paginationCOntrol(
+            $usuarios, 'sliding', 'admin/partials/paginator/paginator.phtml', array(
+        'route' => 'usuarios'
+            )
+    );
+    ?>
+
+

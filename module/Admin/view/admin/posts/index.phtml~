@@ -1,0 +1,17 @@
+<form action="/admin/save/save" method="post">
+    <div>
+        <label>Posts</label>
+    </div>
+        <?php 
+         var_dump('ageitar no index para exibir o titulo e o post . o Valor que ta buscando dos posts é:'.$post);                
+            foreach($posts as $key => $post){
+               
+            }
+        ?>
+    <div>
+        <input type="password" name="senha">
+    </div>
+    <div class="actions">
+        <input type="submit" value="Entrar">
+    </div>
+</form>
