@@ -1,0 +1,39 @@
+<buttom class="btn btn-success" onclick="location.href = '/admin/interesses/save'">Novo Interesse</buttom>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td><td>Descrição</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($interesses as $interesse) {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $interesse->getId(); ?>
+                </td>
+                <td>
+                    <?php echo $interesse->getDescInteresse(); ?>
+                </td>
+                <td>
+                    <a href="/admin/interesses/save/id/ <?php echo $interesse->getId(); ?>">Editar</a>
+                </td>
+                <td>
+                    <a href="/admin/interesses/delete/id/ <?php echo $interesse->getId(); ?>">Excluir</a>
+                </td>
+            </tr>
+
+        <?php } ?>
+    </tbody>
+    
+    <?php
+    echo $this->paginationCOntrol(
+            $interesses, 'sliding', 'admin/partials/paginator/paginator.phtml', array(
+        'route' => 'interesses',
+            )
+    );
+    ?>
+
+
+

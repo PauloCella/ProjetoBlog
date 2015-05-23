@@ -1,0 +1,20 @@
+<?php
+	echo '<h1>Interesses do usuario: '.$usuario->getNome().'</h1>';
+?>
+
+<table class="table">
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Descrição Interesse</td>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($usuario->getInteresses() as $interesse){ ?>
+			<tr>
+				<td><?php echo $interesse->getId(); ?></td>
+				<td><?php echo $interesse->getDescInteresse(); ?></td>
+			</tr>
+		<?php } ?>
+	</tbody>
+</table>
